@@ -11,10 +11,7 @@ from flask import (
 from urllib.parse import unquote_plus, urlparse
 from __main__ import app
 
-@app.route('/redirect_me_please',methods=["GET"])
-def redir_plz():
-    url = '''https://www.gousto.co.uk/raf?promo_code=BARNA44308934&utm_source=iosapp</script><button/popovertarget=x>clickme</button><custom/popover/id='x'/onbeforetoggle=confirm()></custom>'''
-    return redirect(url)
+
 # Easy
 @app.route("/challenge1", methods=["GET"])
 def challenge1():
