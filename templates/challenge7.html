@@ -1,0 +1,37 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+    <h1 class='title'>
+        {% block title %} 
+            Challenge 7!
+        {% endblock %}
+        <br/>
+       Click.
+    </h1>
+    <p>
+        This is a medium DOM exercise.
+    </br>
+        Some lazy developer left an autoclicker in here. Oops.
+    </p>
+
+    <form method="GET" action="/challenge7">
+        <input placeholder="Search..." name="search"/></br>
+        <input type="submit" value="Search" />
+    </form>
+    <a id="tracker" href="/" hidden>
+    </a>
+    <script>
+        function tracking(search,hash) {
+            document.getElementById('tracker').href = search;
+            document.getElementById(hash).click();
+        };
+        var urlParams = new URLSearchParams(window.location.search);
+        var searchTerm = decodeURI(urlParams.get('search'));
+        var hashed = window.location.hash.slice(1);
+        if (searchTerm != 'null') {
+            tracking(searchTerm,hashed);
+        };
+    </script>
+    
+{% endblock %}

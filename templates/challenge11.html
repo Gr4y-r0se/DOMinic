@@ -1,0 +1,21 @@
+{% extends 'template.html' %} {% block content %}
+<h1 class="title">
+  {% block title %} Challenge 11! {% endblock %}
+  <br />
+  You've been framed
+</h1>
+<p>
+  This is a hard DOM exercise.
+  <br />
+  iframes are fun.
+</p>
+<script src="{{ url_for('static', filename= 'js/jQuery.min.js') }}"></script>
+<iframe id="iframe"></iframe>
+<input name="url" type="hidden" id="url" value="{{ url }}" />
+<script>
+  var vurl = document.getElementById("url").value;
+  var ifr = document.getElementById("iframe");
+  ifr.src = vurl;
+</script>
+
+{% endblock %}

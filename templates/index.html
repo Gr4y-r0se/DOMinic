@@ -1,0 +1,80 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+
+    <h1 class='title'>
+        {% block title %} 
+            Welcome!
+        {% endblock %}
+    </h1>
+    <p>
+        These challenges will teach you all about DOM XSS.
+    </br>
+        Use the buttons below to navigate.
+    </p>
+    <table>
+        <tr>
+            <th>Easy</th>
+            <th>Medium</th>
+            <th>Hard</th>
+            <th>Insane</th>
+        </tr>
+        <tr>
+            <td>These are pretty simple challenges, you shouldn't need any help for them</td>
+            <td>These are a bit harder, but still not too bad</td>
+            <td>Now we're talking! DOM Invader + Good JS knowledge is needed here</td>
+            <td>Good luck.</td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="window.location = '/challenge1'">
+                    First Challenge
+                </button><br/>
+                <button onclick="window.location = '/challenge2'">
+                    Second Challenge
+                </button><br/>
+                <button onclick="window.location = '/challenge3'">
+                    Third Challenge
+                </button>
+                <button onclick="window.location = '/challenge4'">
+                    Fourth Challenge
+                </button>
+                <button onclick="window.location = '/challenge5'">
+                    Fifth Challenge
+                </button>
+            </td>
+            <td>
+                <button onclick="window.location = '/challenge6'">
+                    Sixth Challenge
+                </button><br/>
+                <button onclick="window.location = '/challenge7'">
+                    Seventh Challenge
+                </button><br/>
+                <button onclick="window.location = '/challenge8'">
+                    Eighth Challenge
+                </button>
+                <button onclick="window.location = '/challenge9'">
+                    Ninth Challenge
+                </button>
+                <button onclick="window.location = '/challenge10'">
+                    Tenth Challenge
+                </button>
+            </td>
+            <td>
+                <button onclick="window.location = '/challenge11'">
+                    Eleventh Challenge
+                </button>
+                <button>
+                    Four More Coming Soon...
+                </button><br/>
+            </td>
+            <td>
+                <button>
+                    Coming Soon...
+                </button><br/>
+            </td>
+        </tr>
+    </table>
+    
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+    <h1 class='title'>
+        {% block title %} 
+            Challenge 8!
+        {% endblock %}
+        <br/>
+        Length Limits 
+    </h1>
+    <p>
+        This is a medium DOM exercise.
+    </br>
+        Use the form to perform a search. There is a length limit of 5 charecters.
+    </p>
+    <script src="{{ url_for('static', filename= 'js/sanitisation.js') }}"></script>
+    <form method="GET" action="/challenge8">
+        <input placeholder="Search..." name="search"/></br>
+        <input type="submit" value="Search" />
+    </form>
+    <div id="tracker" hidden>
+        <div id="placeholder">
+            
+        </div>
+    </a>
+    <script>
+        function tracking(search,secret) {
+            document.getElementById('tracker').innerHTML = search.substring(0,5);
+            var clean = purify(secret); //Nice and pure.
+            document.getElementById('tracker').firstChild.innerHTML = clean;
+            
+        };
+        var urlParams = new URLSearchParams(window.location.search);
+        var searchTerm = decodeURI(urlParams.get('search'));
+        var secretSearch = decodeURI(urlParams.get('secret')); //sshhhh, it's a secret. 
+        if (searchTerm != 'null') {
+            tracking(searchTerm,secretSearch);
+        };
+    </script>
+    
+{% endblock %}

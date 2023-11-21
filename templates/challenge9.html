@@ -1,0 +1,27 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+    <h1 class='title'>
+        {% block title %} 
+            Challenge 9!
+        {% endblock %}
+        <br/>
+        Developer Nonsense 
+    </h1>
+    <p>
+        This is a medium DOM exercise.
+    </br>
+        Imagine testing in IE.
+    </p>
+    <script src="{{ url_for('static', filename= 'js/sanitisation.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'js/jQuery.min.js') }}"></script>
+    <form method="GET" action="/challenge9">
+        <input id="search" placeholder="Search..." name="search" onchange="track(this.value)"/></br>
+        <input type="submit" value="Search" />
+    </form>
+    <script>
+        window.onload=function e(c){document.getElementById("search").value=window.location.hash.slice(1),document.getElementById("search").onchange()};function track(e){clean=sanitize(e),document.cookie="tracker="+e}
+    </script>
+    
+{% endblock %}

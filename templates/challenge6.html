@@ -1,0 +1,41 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+    <h1 class='title'>
+        {% block title %} 
+            Challenge 6!
+        {% endblock %}
+        <br/>
+       Open Redirection is not the issue
+    </h1>
+    <p>
+        This is a medium DOM exercise.
+    </br>
+        Use the form to redirect to another website.
+    </br>
+        <i><b>NB:</b> Please don't moan about an open redirect here.</br> I know, but that's not the point of this exercise. </i>
+    </p>
+
+    <form method="GET" action="/challenge6">
+        <input placeholder="Search..." name="search"/></br>
+        <input type="submit" value="Search" />
+    </form>
+    <div id="tracker" hidden>
+    </div>
+    <script>
+        function tracking(search){
+            if (search.indexOf('https://') === -1 ) {
+                search = 'https://'+search
+            };
+            location.href = search;
+        };
+        var urlParams = new URLSearchParams(window.location.search);
+        var searchTerm = decodeURI(urlParams.get('search'));
+        if (searchTerm != 'null') {
+            tracking(searchTerm);
+        };
+        
+    </script>
+    
+{% endblock %}

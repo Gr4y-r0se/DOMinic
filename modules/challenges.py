@@ -1,0 +1,87 @@
+from flask import (
+    Flask,
+    render_template,
+    request,
+    url_for,
+    flash,
+    redirect,
+    make_response,
+    session,
+)
+from urllib.parse import unquote_plus, urlparse
+from __main__ import app
+
+@app.route('/redirect_me_please',methods=["GET"])
+def redir_plz():
+    url = '''https://www.gousto.co.uk/raf?promo_code=BARNA44308934&utm_source=iosapp</script><button/popovertarget=x>clickme</button><custom/popover/id='x'/onbeforetoggle=confirm()></custom>'''
+    return redirect(url)
+# Easy
+@app.route("/challenge1", methods=["GET"])
+def challenge1():
+    return render_template("challenge1.html")
+
+
+@app.route("/challenge2", methods=["GET"])
+def challenge2():
+    return render_template("challenge2.html")
+
+
+@app.route("/challenge3", methods=["GET"])
+def challenge3():
+    return render_template("challenge3.html")
+
+
+@app.route("/challenge4", methods=["GET"])
+def challenge4():
+    return render_template("challenge4.html")
+
+
+@app.route("/challenge5", methods=["GET"])
+def challenge5():
+    return render_template("challenge5.html")
+
+
+# Medium
+@app.route("/challenge6", methods=["GET"])
+def challenge6():
+    return render_template("challenge6.html")
+
+
+@app.route("/challenge7", methods=["GET"])
+def challenge7():
+    return render_template("challenge7.html")
+
+
+@app.route("/challenge8", methods=["GET"])
+def challenge8():
+    return render_template("challenge8.html")
+
+
+@app.route("/challenge9", methods=["GET"])
+def challenge9():
+    return render_template("challenge9.html")
+
+
+@app.route("/challenge10", methods=["GET"])
+def challenge10():
+    return render_template("challenge10.html")
+
+
+# Hard
+@app.route("/challenge11", methods=["GET"])
+def challenge11():
+    if not request.args.get("url"):
+        return redirect("/challenge11?url=/challenge1")
+    url = request.full_path.split("?url=")[1]
+    if url.startswith("/") or url.startswith("//"):
+        pass
+    elif not any(url.startswith(i) for i in ["https://", "javascript://"]):
+        url = ""
+    elif urlparse(url).netloc != request.headers["Host"]:
+        url = ""
+
+    url = unquote_plus(url)
+    return render_template("challenge11.html", url=url)
+
+
+# Insane

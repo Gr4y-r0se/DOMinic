@@ -1,0 +1,36 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+
+    <h1 class='title'>
+        {% block title %} 
+            Challenge 3!
+        {% endblock %}
+        <br/>
+       No brackets :(
+    </h1>
+    <p>
+        This is a basic DOM exercise.
+    </br>
+        Use the searchbar to search for something.
+    </p>
+
+    <form method="GET" action="/challenge3">
+        <input placeholder="Search..." name="search"/></br>
+        <input type="submit" value="Search" />
+    </form>
+    <div id="tracker" hidden>
+    </div>
+    <script>
+        function tracking(search){
+            search = search.split('(')[0];
+            document.getElementById('tracker').innerHTML = search;
+        };
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('search')) {
+            var searchTerm = urlParams.get('search');
+            tracking(searchTerm);
+        };
+    </script>
+{% endblock %}
