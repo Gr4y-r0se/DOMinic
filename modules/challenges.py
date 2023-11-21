@@ -67,8 +67,26 @@ def challenge10():
 # Hard
 @app.route("/challenge11", methods=["GET"])
 def challenge11():
+    source_cookie = request.cookies.get('source')
+
+    response = make_response(render_template("challenge11.html"))
+
+    if source_cookie is None:
+        # You can change the max_age and expires values based on your requirements
+        response = make_response(render_template("challenge11.html", src=request.remote_addr))
+        response.set_cookie('source', value=request.remote_addr, max_age=604800, expires=None)
+    else:
+        response = make_response(render_template("challenge11.html", src=source_cookie))
+    
+    return response
+
+
+# Insane
+
+@app.route("/challenge16", methods=["GET"])
+def challenge16():
     if not request.args.get("url"):
-        return redirect("/challenge11?url=/challenge1")
+        return redirect("/challenge16?url=/challenge1")
     url = request.full_path.split("?url=")[1]
     if url.startswith("/") or url.startswith("//"):
         pass
@@ -78,7 +96,4 @@ def challenge11():
         url = ""
 
     url = unquote_plus(url)
-    return render_template("challenge11.html", url=url)
-
-
-# Insane
+    return render_template("challenge16.html", url=url)

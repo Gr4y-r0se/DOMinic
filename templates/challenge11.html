@@ -1,21 +1,33 @@
-{% extends 'template.html' %} {% block content %}
-<h1 class="title">
-  {% block title %} Challenge 11! {% endblock %}
-  <br />
-  You've been framed
-</h1>
-<p>
-  This is a hard DOM exercise.
-  <br />
-  iframes are fun.
-</p>
-<script src="{{ url_for('static', filename= 'js/jQuery.min.js') }}"></script>
-<iframe id="iframe"></iframe>
-<input name="url" type="hidden" id="url" value="{{ url }}" />
-<script>
-  var vurl = document.getElementById("url").value;
-  var ifr = document.getElementById("iframe");
-  ifr.src = vurl;
-</script>
+{% extends 'template.html' %}
 
+
+{% block content %}
+    <h1 class='title'>
+        {% block title %} 
+            Challenge 10!
+        {% endblock %}
+        <br/>
+        Decisions, Decisions
+    </h1>
+    <p>
+        This is a Hard DOM exercise.
+    </br>
+        Try not to get caught by the SOC...
+    </p>
+    <script src="{{ url_for('static', filename= 'js/jQuery-3.1.1.min.js') }}"></script>
+    <form method="GET" action="/challenge11">
+        <input id="search" placeholder="Search..." name="search"/></br>
+        <label>Origin of Request:</label><div id="origin"></div>
+        
+    </form>
+    <script>
+        {% autoescape false %}
+        var source = " {{ src }} ";
+        {% endautoescape %}
+        $("#origin").html(source)
+        if (document.getElementById('origin').innerHTML.trim() !== '') {
+            alert('The SOC caught you, better luck next time.')
+        }
+    </script>
+    
 {% endblock %}
