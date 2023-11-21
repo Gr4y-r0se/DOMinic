@@ -72,7 +72,6 @@ def challenge11():
     response = make_response(render_template("challenge11.html"))
 
     if source_cookie is None:
-        # You can change the max_age and expires values based on your requirements
         response = make_response(render_template("challenge11.html", src=request.remote_addr))
         response.set_cookie('source', value=request.remote_addr, max_age=604800, expires=None)
     else:
