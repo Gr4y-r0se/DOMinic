@@ -79,6 +79,21 @@ def challenge11():
     
     return response
 
+@app.route("/challenge12", methods=["GET","POST"])
+def challenge12():
+    
+    if request.method == 'GET':
+        if request.args.get("greeting"):
+            greeting = "GET requests are blocked."
+        else:
+            greeting="{{ greeting }}"
+    elif request.method == 'POST':
+        if request.args.get("greeting"):
+            greeting = request.args.get("greeting")
+        else:
+            greeting="{{ greeting }}"
+    
+    return render_template("challenge12.html",greeting=greeting)
 
 # Insane
 

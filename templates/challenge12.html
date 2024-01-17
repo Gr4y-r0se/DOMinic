@@ -1,0 +1,47 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+<div ng-app="myApp">
+    <h1 class='title'>
+        {% block title %} 
+        Sandcastles
+        {% endblock %}
+    </h1>
+    <script src="{{ url_for('static', filename='js/angular.js') }}"></script>
+    <p>
+        This is a Hard DOM exercise.
+    </br>
+        Even Google makes mistakes...
+    </p>
+    <div ng-controller="myController">
+      {% autoescape false %}
+      <h1>{{ greeting }}</h1>
+      {% endautoescape %}
+      <input type="text" ng-model="name" placeholder="Enter your name"></br>
+      <button ng-click="sayHello()">Say Hello</button>
+    </div>
+      
+      <script>
+        // Define AngularJS module
+        var app = angular.module('myApp', []);
+      
+        // Define AngularJS controller
+        app.controller('myController', function($scope) {
+          // Initialize variables
+          $scope.greeting = 'Hello, AngularJS!';
+          $scope.name = '{{ name }}'; //pass in name
+      
+          // Define function to be called on button click
+          $scope.sayHello = function() {
+            if ($scope.name) {
+              $scope.greeting = 'Hello, ' + $scope.name + '!';
+            } else {
+              $scope.greeting = 'Hello, AngularJS!';
+            }
+          };
+        });
+      </script>
+      </div>
+    
+{% endblock %}
