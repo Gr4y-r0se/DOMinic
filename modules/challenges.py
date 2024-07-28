@@ -1,12 +1,8 @@
 from flask import (
-    Flask,
     render_template,
     request,
-    url_for,
-    flash,
     redirect,
     make_response,
-    session,
 )
 from urllib.parse import unquote_plus, urlparse
 from __main__ import app
@@ -75,6 +71,7 @@ def challenge11():
         response = make_response(render_template("challenge11.html", src=request.remote_addr))
         response.set_cookie('source', value=request.remote_addr, max_age=604800, expires=None)
     else:
+        source_cookie = source_cookie.replace('"','&quot;')
         response = make_response(render_template("challenge11.html", src=source_cookie))
     
     return response
