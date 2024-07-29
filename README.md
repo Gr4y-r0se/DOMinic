@@ -21,5 +21,7 @@ docker run -p 443:443 dominic
 ```
 
 ### Thanks
+I'd like to thank the following people for their assistance:
 
-Thanks to @AssassinUKG for providing the Dockerfile
+ - [@AssassinUKG](https://github.com/AssassinUKG) for providing the Dockerfile
+ - [@keelanbrady1011](https://github.com/keelanbrady1011) for demonstrating an unintended solution to challenge 11
