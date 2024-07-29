@@ -13,3 +13,9 @@ git clone git@github.com:Gr4y-r0se/DOMinic.git
 pip3 install -r requirements.txt
 python3 app.py
 ```
+
+Or use the provided Docker container.
+
+### Thanks
+
+Thanks to @AssassinUKG for providing the Docker file
