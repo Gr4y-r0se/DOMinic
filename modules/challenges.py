@@ -63,36 +63,42 @@ def challenge10():
 # Hard
 @app.route("/challenge11", methods=["GET"])
 def challenge11():
-    source_cookie = request.cookies.get('source')
+    source_cookie = request.cookies.get("source")
 
     response = make_response(render_template("challenge11.html"))
 
     if source_cookie is None:
-        response = make_response(render_template("challenge11.html", src=request.remote_addr))
-        response.set_cookie('source', value=request.remote_addr, max_age=604800, expires=None)
+        response = make_response(
+            render_template("challenge11.html", src=request.remote_addr)
+        )
+        response.set_cookie(
+            "source", value=request.remote_addr, max_age=604800, expires=None
+        )
     else:
-        source_cookie = source_cookie.replace('"','&quot;')
+        source_cookie = source_cookie.replace('"', "&quot;")
         response = make_response(render_template("challenge11.html", src=source_cookie))
-    
+
     return response
 
-@app.route("/challenge12", methods=["GET","POST"])
+
+@app.route("/challenge12", methods=["GET", "POST"])
 def challenge12():
-    
-    if request.method == 'GET':
+    if request.method == "GET":
         if request.args.get("greeting"):
             greeting = "GET requests are blocked."
         else:
-            greeting="{{ greeting }}"
-    elif request.method == 'POST':
+            greeting = "{{ greeting }}"
+    elif request.method == "POST":
         if request.args.get("greeting"):
             greeting = request.args.get("greeting")
         else:
-            greeting="{{ greeting }}"
-    
-    return render_template("challenge12.html",greeting=greeting)
+            greeting = "{{ greeting }}"
+
+    return render_template("challenge12.html", greeting=greeting)
+
 
 # Insane
+
 
 @app.route("/challenge16", methods=["GET"])
 def challenge16():

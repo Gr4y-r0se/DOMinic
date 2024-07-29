@@ -24,4 +24,4 @@ docker run -p 443:443 dominic
 I'd like to thank the following people for their assistance:
 
  - [@AssassinUKG](https://github.com/AssassinUKG) for providing the Dockerfile
- - [@keelanbrady1011](https://github.com/keelanbrady1011) for demonstrating an unintended solution to challenge 11
+ - [@keelanbrady1011](https://github.com/keelanbrady1011) for demonstrating an unintended solution to Research Proposal, and for catching an issue with Length Limits that made me giggle so it stayed in
